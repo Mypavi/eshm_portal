@@ -1,0 +1,179 @@
+<mvc:View controllerName="eshm.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards">
+    <Page id="dashboardPage" title="{i18n>dashboardTitle}" class="dashboardPage">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <core:Icon src="sap-icon://building" size="2rem" color="#0070f2"/>
+                    <Title text="Kaar Technologies - EHSM Portal" level="H3" class="headerTitle"/>
+                </contentLeft>
+                <contentRight>
+                    <Text text="Welcome, Employee: {user>/employeeId}" class="welcomeText"/>
+                    <Button text="{i18n>logoutButton}" press="onLogout" type="Transparent" icon="sap-icon://log"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        
+        <content>
+            <ScrollContainer height="100%" vertical="true">
+                <VBox class="dashboardContent">
+                    <!-- Welcome Section -->
+                    <Panel class="welcomePanel" headerText="{i18n>welcomeMessage}">
+                        <content>
+                            <HBox class="statsContainer" justifyContent="SpaceAround">
+                                <VBox class="statCard incidentCard" alignItems="Center">
+                                    <core:Icon src="sap-icon://alert" size="3rem" color="#d32f2f"/>
+                                    <Title text="{dashboard>/totalIncidents}" level="H2"/>
+                                    <Text text="Total Incidents"/>
+                                </VBox>
+                                <VBox class="statCard riskCard" alignItems="Center">
+                                    <core:Icon src="sap-icon://warning" size="3rem" color="#ff9800"/>
+                                    <Title text="{dashboard>/totalRisks}" level="H2"/>
+                                    <Text text="Total Risks"/>
+                                </VBox>
+                                <VBox class="statCard openCard" alignItems="Center">
+                                    <core:Icon src="sap-icon://status-critical" size="3rem" color="#f44336"/>
+                                    <Title text="{dashboard>/openIncidents}" level="H2"/>
+                                    <Text text="Open Incidents"/>
+                                </VBox>
+                                <VBox class="statCard highRiskCard" alignItems="Center">
+                                    <core:Icon src="sap-icon://status-error" size="3rem" color="#e91e63"/>
+                                    <Title text="{dashboard>/highRisks}" level="H2"/>
+                                    <Text text="High Risks"/>
+                                </VBox>
+                            </HBox>
+                        </content>
+                    </Panel>
+
+                    <!-- Incident Management Section -->
+                    <Panel class="dataPanel" headerText="{i18n>incidentManagement}" expandable="true" expanded="true">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="{i18n>incidentManagement}"/>
+                                <ToolbarSpacer/>
+                                <Button text="{i18n>refresh}" press="onRefreshIncidents" icon="sap-icon://refresh"/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <content>
+                            <Table id="incidentTable" 
+                                   items="{incidents>/}" 
+                                   growing="true" 
+                                   growingThreshold="20"
+                                   class="dataTable">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Text text="Plant: {user>/plant}" class="plantInfo"/>
+                                        <ToolbarSpacer/>
+                                        <SearchField search="onSearchIncidents" width="300px"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="{i18n>incidentId}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>incidentDescription}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>incidentCategory}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>incidentPriority}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>incidentStatus}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>incidentDate}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem press="onIncidentPress">
+                                        <cells>
+                                            <Text text="{incidents>IncidentId}"/>
+                                            <Text text="{incidents>IncidentDescription}"/>
+                                            <Text text="{incidents>IncidentCategory}"/>
+                                            <ObjectStatus text="{incidents>IncidentPriority}" 
+                                                         state="{path: 'incidents>IncidentPriority', formatter: '.formatPriorityState'}"/>
+                                            <ObjectStatus text="{incidents>IncidentStatus}" 
+                                                         state="{path: 'incidents>IncidentStatus', formatter: '.formatStatusState'}"/>
+                                            <Text text="{path: 'incidents>IncidentDate', formatter: '.formatDate'}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </content>
+                    </Panel>
+
+                    <!-- Risk Assessment Section -->
+                    <Panel class="dataPanel" headerText="{i18n>riskAssessment}" expandable="true" expanded="true">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="{i18n>riskAssessment}"/>
+                                <ToolbarSpacer/>
+                                <Button text="{i18n>refresh}" press="onRefreshRisks" icon="sap-icon://refresh"/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <content>
+                            <Table id="riskTable" 
+                                   items="{risks>/}" 
+                                   growing="true" 
+                                   growingThreshold="20"
+                                   class="dataTable">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Text text="Plant: {user>/plant}" class="plantInfo"/>
+                                        <ToolbarSpacer/>
+                                        <SearchField search="onSearchRisks" width="300px"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="{i18n>riskId}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>riskDescription}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>riskCategory}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>riskSeverity}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>riskLikelihood}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>mitigationMeasures}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>riskIdentificationDate}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem press="onRiskPress">
+                                        <cells>
+                                            <Text text="{risks>RiskId}"/>
+                                            <Text text="{risks>RiskDescription}"/>
+                                            <Text text="{risks>RiskCategory}"/>
+                                            <ObjectStatus text="{risks>RiskSeverity}" 
+                                                         state="{path: 'risks>RiskSeverity', formatter: '.formatSeverityState'}"/>
+                                            <ObjectStatus text="{risks>Likelihood}" 
+                                                         state="{path: 'risks>Likelihood', formatter: '.formatLikelihoodState'}"/>
+                                            <Text text="{risks>MitigationMeasures}"/>
+                                            <Text text="{path: 'risks>RiskIdentificationDate', formatter: '.formatDate'}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </content>
+                    </Panel>
+                </VBox>
+            </ScrollContainer>
+        </content>
+    </Page>
+</mvc:View>

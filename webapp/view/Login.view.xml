@@ -1,0 +1,53 @@
+<mvc:View controllerName="eshm.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Page id="loginPage" title="{i18n>loginTitle}" class="loginPage">
+        <content>
+            <VBox class="loginContainer" alignItems="Center" justifyContent="Center">
+                <!-- Kaar Technologies Logo/Header -->
+                <VBox class="logoContainer" alignItems="Center">
+                    <core:Icon src="sap-icon://building" size="4rem" color="#0070f2"/>
+                    <Title text="Kaar Technologies" level="H1" class="companyTitle"/>
+                    <Text text="{i18n>loginTitle}" class="loginSubtitle"/>
+                </VBox>
+                
+                <!-- Login Form -->
+                <VBox class="loginForm" width="400px">
+                    <MessageStrip id="messageStrip" visible="false" class="messageStrip"/>
+                    
+                    <VBox class="inputContainer">
+                        <Label text="{i18n>employeeIdLabel}" required="true"/>
+                        <Input id="employeeIdInput" 
+                               value="{/employeeId}" 
+                               placeholder="Enter Employee ID"
+                               maxLength="8"
+                               class="loginInput"/>
+                    </VBox>
+                    
+                    <VBox class="inputContainer">
+                        <Label text="{i18n>passwordLabel}" required="true"/>
+                        <Input id="passwordInput" 
+                               type="Password"
+                               value="{/password}" 
+                               placeholder="Enter Password"
+                               class="loginInput"/>
+                    </VBox>
+                    
+                    <Button id="loginButton" 
+                            text="{i18n>loginButton}" 
+                            press="onLogin" 
+                            type="Emphasized" 
+                            width="100%"
+                            class="loginButton"/>
+                </VBox>
+                
+                <!-- Footer -->
+                <VBox class="loginFooter" alignItems="Center">
+                    <Text text="Environment, Health &amp; Safety Management System" class="footerText"/>
+                    <Text text="© 2026 Kaar Technologies. All rights reserved." class="copyrightText"/>
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZESHM_PR_SRV/",
+        "uri": "https://172.17.19.24:44300/sap/opu/odata/sap/ZESHM_PR_SRV/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -49,7 +49,9 @@
       "minUI5Version": "1.143.2",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.commons": {}
       }
     },
     "contentDensities": {
@@ -90,17 +92,28 @@
       },
       "routes": [
         {
-          "name": "Routeeshm",
-          "pattern": ":?query:",
+          "name": "login",
+          "pattern": "",
           "target": [
-            "Targeteshm"
+            "login"
+          ]
+        },
+        {
+          "name": "dashboard",
+          "pattern": "dashboard",
+          "target": [
+            "dashboard"
           ]
         }
       ],
       "targets": {
-        "Targeteshm": {
-          "id": "eshm",
-          "name": "eshm"
+        "login": {
+          "id": "login",
+          "name": "Login"
+        },
+        "dashboard": {
+          "id": "dashboard",
+          "name": "Dashboard"
         }
       }
     },

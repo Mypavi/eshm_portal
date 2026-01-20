@@ -1,1 +1,193 @@
-/* Enter your custom styles here */
+/* Kaar Technologies EHSM Portal Styles */
+
+/* Global Styles */
+.sapUiBody {
+    font-family: "72", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Login Page Styles */
+.loginPage .sapMPageBG {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.loginContainer {
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.logoContainer {
+    margin-bottom: 3rem;
+}
+
+.companyTitle {
+    color: white;
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
+.loginSubtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.loginForm {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.messageStrip {
+    margin-bottom: 1.5rem;
+}
+
+.inputContainer {
+    margin-bottom: 1.5rem;
+}
+
+.loginInput {
+    margin-top: 0.5rem;
+}
+
+.loginButton {
+    margin-top: 1rem;
+    height: 3rem;
+    font-size: 1.1rem;
+}
+
+.loginFooter {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footerText {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.copyrightText {
+    font-size: 0.8rem;
+}
+
+/* Dashboard Styles */
+.dashboardPage .sapMPageHeader {
+    background: #0070f2;
+    color: white;
+}
+
+.headerTitle {
+    color: white;
+    margin-left: 1rem;
+}
+
+.welcomeText {
+    color: white;
+    margin-right: 1rem;
+}
+
+.dashboardContent {
+    padding: 1rem;
+    background: #f5f5f5;
+    min-height: calc(100vh - 3rem);
+}
+
+.welcomePanel {
+    margin-bottom: 1.5rem;
+}
+
+.statsContainer {
+    padding: 1rem;
+}
+
+.statCard {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    border-left: 4px solid;
+}
+
+.incidentCard {
+    border-left-color: #d32f2f;
+}
+
+.riskCard {
+    border-left-color: #ff9800;
+}
+
+.openCard {
+    border-left-color: #f44336;
+}
+
+.highRiskCard {
+    border-left-color: #e91e63;
+}
+
+.dataPanel {
+    margin-bottom: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dataTable {
+    background: white;
+}
+
+.plantInfo {
+    font-weight: bold;
+    color: #0070f2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loginForm {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    
+    .statsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .statCard {
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Table Enhancements */
+.sapMListTbl .sapMListTblRow:hover {
+    background-color: #f0f8ff;
+}
+
+.sapMObjectStatus {
+    font-weight: bold;
+}
+
+/* Animation for loading states */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dataPanel {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Custom button styles */
+.sapMBtn.sapMBtnEmphasized {
+    background: #0070f2;
+    border-color: #0070f2;
+}
+
+.sapMBtn.sapMBtnEmphasized:hover {
+    background: #005bb5;
+    border-color: #005bb5;
+}
