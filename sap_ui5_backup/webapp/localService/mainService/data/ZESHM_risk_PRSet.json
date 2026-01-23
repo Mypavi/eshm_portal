@@ -1,0 +1,38 @@
+[
+  {
+    "EmployeeId": "00000001",
+    "RiskId": "RISK000001",
+    "RiskDescription": "Exposure to chemical",
+    "RiskIdentificationDate": "/Date(1755561600000)/",
+    "RiskCategory": "Safety",
+    "RiskSeverity": "High",
+    "Plant": "AT01",
+    "MitigationMeasures": "Training",
+    "Likelihood": "Likely",
+    "CreatedBy": "K901604"
+  },
+  {
+    "EmployeeId": "K901900",
+    "RiskId": "RISK000101",
+    "RiskDescription": "Exposure to chemical",
+    "RiskIdentificationDate": "/Date(1755561600000)/",
+    "RiskCategory": "Safety",
+    "RiskSeverity": "High",
+    "Plant": "AT01",
+    "MitigationMeasures": "Training",
+    "Likelihood": "Likely",
+    "CreatedBy": "K901900"
+  },
+  {
+    "EmployeeId": "K901900",
+    "RiskId": "RISK000102",
+    "RiskDescription": "Machine malfunction",
+    "RiskIdentificationDate": "/Date(1755129600000)/",
+    "RiskCategory": "Operational",
+    "RiskSeverity": "Low",
+    "Plant": "AT01",
+    "MitigationMeasures": "Automation Upgrade",
+    "Likelihood": "Rare",
+    "CreatedBy": "K901900"
+  }
+]

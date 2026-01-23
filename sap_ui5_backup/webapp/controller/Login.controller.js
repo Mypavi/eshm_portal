@@ -75,10 +75,8 @@ sap.ui.define([
             
             this._showMessage("Login successful! Redirecting to dashboard...", "Success");
             
-            // Navigate to dashboard after short delay
-            setTimeout(() => {
-                this.getRouter().navTo("dashboard");
-            }, 1500);
+            // Navigate to dashboard immediately
+            this.getRouter().navTo("dashboard", {}, true);
         },
 
         _onLoginError(oError) {

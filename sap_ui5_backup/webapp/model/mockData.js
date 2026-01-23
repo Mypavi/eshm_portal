@@ -9,6 +9,12 @@ sap.ui.define([], () => {
                 password: "12345",
                 plant: "AT01",
                 name: "Safety Engineer"
+            },
+            "K901900": {
+                employeeId: "K901900",
+                password: "Pavi@12345",
+                plant: "AT01",
+                name: "Safety Engineer"
             }
         },
 
@@ -69,6 +75,48 @@ sap.ui.define([], () => {
                 "CreatedBy": "K901604",
                 "CompletionDate": "",
                 "CompletionTime": "PT00H00M00S"
+            },
+            {
+                "EmployeeId": "K901900",
+                "IncidentId": "INC000101",
+                "Plant": "AT01",
+                "IncidentDescription": "Chemical leak in storage",
+                "IncidentCategory": "Safety",
+                "IncidentPriority": "High",
+                "IncidentStatus": "Open",
+                "IncidentDate": "/Date(1755561600000)/",
+                "IncidentTime": "PT08H33M24S",
+                "CreatedBy": "K901900",
+                "CompletionDate": "",
+                "CompletionTime": "PT00H00M00S"
+            },
+            {
+                "EmployeeId": "K901900",
+                "IncidentId": "INC000102",
+                "Plant": "AT01",
+                "IncidentDescription": "Equipment malfunction in assembly",
+                "IncidentCategory": "Operational",
+                "IncidentPriority": "Low",
+                "IncidentStatus": "Closed",
+                "IncidentDate": "/Date(1755129600000)/",
+                "IncidentTime": "PT08H33M24S",
+                "CreatedBy": "K901900",
+                "CompletionDate": "/Date(1755388800000)/",
+                "CompletionTime": "PT00H00M00S"
+            },
+            {
+                "EmployeeId": "K901900",
+                "IncidentId": "INC000103",
+                "Plant": "AT01",
+                "IncidentDescription": "Fire Accident",
+                "IncidentCategory": "Environmental",
+                "IncidentPriority": "Medium",
+                "IncidentStatus": "In Progress",
+                "IncidentDate": "/Date(1754697600000)/",
+                "IncidentTime": "PT08H33M24S",
+                "CreatedBy": "K901900",
+                "CompletionDate": "",
+                "CompletionTime": "PT00H00M00S"
             }
         ],
 
@@ -121,6 +169,42 @@ sap.ui.define([], () => {
                 "MitigationMeasures": "Automation Upgrade",
                 "Likelihood": "Likely",
                 "CreatedBy": "K901604"
+            },
+            {
+                "EmployeeId": "K901900",
+                "RiskId": "RISK000101",
+                "RiskDescription": "Exposure to chemical",
+                "RiskIdentificationDate": "/Date(1755561600000)/",
+                "RiskCategory": "Safety",
+                "RiskSeverity": "High",
+                "Plant": "AT01",
+                "MitigationMeasures": "Training",
+                "Likelihood": "Likely",
+                "CreatedBy": "K901900"
+            },
+            {
+                "EmployeeId": "K901900",
+                "RiskId": "RISK000102",
+                "RiskDescription": "Machine malfunction",
+                "RiskIdentificationDate": "/Date(1755129600000)/",
+                "RiskCategory": "Operational",
+                "RiskSeverity": "Low",
+                "Plant": "AT01",
+                "MitigationMeasures": "Automation Upgrade",
+                "Likelihood": "Rare",
+                "CreatedBy": "K901900"
+            },
+            {
+                "EmployeeId": "K901900",
+                "RiskId": "RISK000103",
+                "RiskDescription": "Fire risk",
+                "RiskIdentificationDate": "/Date(1754697600000)/",
+                "RiskCategory": "Environmental",
+                "RiskSeverity": "Medium",
+                "Plant": "AT01",
+                "MitigationMeasures": "Training",
+                "Likelihood": "Unlikely",
+                "CreatedBy": "K901900"
             }
         ],
 

@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "eshm/model/models"
-], (UIComponent, models) => {
+    "eshm/model/models",
+    "sap/ui/model/json/JSONModel"
+], (UIComponent, models, JSONModel) => {
     "use strict";
 
     return UIComponent.extend("eshm.Component", {
@@ -19,32 +20,36 @@ sap.ui.define([
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
 
+            // Initialize user session
+            this._initializeUserSession();
+
             // enable routing
             this.getRouter().initialize();
-
-            // Initialize user session check
-            this._initializeSession();
         },
 
-        _initializeSession() {
-            // Check if there's an existing session
+        _initializeUserSession() {
+            // Initialize empty user model
+            const oUserModel = new JSONModel({
+                employeeId: "",
+                plant: "",
+                isLoggedIn: false,
+                loginTime: null
+            });
+            this.setModel(oUserModel, "user");
+
+            // Set up route guards
             const oRouter = this.getRouter();
-            
-            // Navigate to login by default
-            oRouter.getRoute("login").attachPatternMatched(this._onLoginMatched, this);
-            oRouter.getRoute("dashboard").attachPatternMatched(this._onDashboardMatched, this);
+            oRouter.attachRouteMatched(this._onRouteMatched, this);
         },
 
-        _onLoginMatched() {
-            // Clear any existing user session when accessing login
-            this.setModel(null, "user");
-        },
-
-        _onDashboardMatched() {
-            // Check authentication when accessing dashboard
+        _onRouteMatched(oEvent) {
+            const sRouteName = oEvent.getParameter("name");
             const oUserModel = this.getModel("user");
-            if (!oUserModel || !oUserModel.getProperty("/isLoggedIn")) {
-                this.getRouter().navTo("login");
+            const bIsLoggedIn = oUserModel && oUserModel.getProperty("/isLoggedIn");
+
+            // Redirect to login if not authenticated and trying to access protected routes
+            if (sRouteName === "dashboard" && !bIsLoggedIn) {
+                this.getRouter().navTo("login", {}, true);
             }
         }
     });

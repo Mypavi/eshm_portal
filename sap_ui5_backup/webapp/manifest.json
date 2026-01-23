@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "https://172.17.19.24:44300/sap/opu/odata/sap/ZESHM_PR_SRV/",
+        "uri": "/sap/opu/odata/sap/ZESHM_PR_SRV/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -62,7 +62,9 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "eshm.i18n.i18n"
+          "bundleName": "eshm.i18n.i18n",
+          "supportedLocales": ["", "en"],
+          "fallbackLocale": "en"
         }
       },
       "": {
@@ -109,11 +111,15 @@
       "targets": {
         "login": {
           "id": "login",
-          "name": "Login"
+          "name": "Login",
+          "controlId": "app",
+          "controlAggregation": "pages"
         },
         "dashboard": {
           "id": "dashboard",
-          "name": "Dashboard"
+          "name": "Dashboard",
+          "controlId": "app",
+          "controlAggregation": "pages"
         }
       }
     },

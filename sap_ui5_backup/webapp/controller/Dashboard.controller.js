@@ -33,12 +33,17 @@ sap.ui.define([
         _checkAuthentication() {
             const oUserModel = this.getOwnerComponent().getModel("user");
             if (!oUserModel || !oUserModel.getProperty("/isLoggedIn")) {
-                this.getRouter().navTo("login");
-                return;
+                this.getRouter().navTo("login", {}, true);
+                return false;
             }
+            return true;
         },
 
         _loadDashboardData() {
+            if (!this._checkAuthentication()) {
+                return;
+            }
+            
             const oUserModel = this.getOwnerComponent().getModel("user");
             const sEmployeeId = oUserModel.getProperty("/employeeId");
             
