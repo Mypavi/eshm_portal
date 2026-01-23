@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ESHM</title>
+    <title>ESHM Portal</title>
     <style>
         html, body, body > div, #container, #container-uiarea {
             height: 100%;
@@ -17,20 +17,22 @@
         data-sap-ui-resource-roots='{
             "eshm": "./"
         }'
-        data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
         data-sap-ui-compat-version="edge"
         data-sap-ui-async="false"
         data-sap-ui-frame-options="trusted"
-        data-sap-ui-preload=""
+        data-sap-ui-xx-waitForTheme="true"
     ></script>
+    <script>
+        sap.ui.getCore().attachInit(function() {
+            new sap.ui.core.ComponentContainer({
+                name: "eshm",
+                settings: {
+                    id: "eshm"
+                }
+            }).placeAt("content");
+        });
+    </script>
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
-    <div
-        data-sap-ui-component
-        data-name="eshm"
-        data-id="container"
-        data-settings='{"id" : "eshm"}'
-        data-handle-validation="true"
-    ></div>
 </body>
 </html>

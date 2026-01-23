@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
     "eshm/model/models",
-    "sap/ui/model/json/JSONModel"
-], (UIComponent, models, JSONModel) => {
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/resource/ResourceModel"
+], (UIComponent, models, JSONModel, ResourceModel) => {
     "use strict";
 
     return UIComponent.extend("eshm.Component", {
@@ -20,11 +21,24 @@ sap.ui.define([
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
 
+            // Initialize i18n model explicitly
+            this._initializeI18n();
+
             // Initialize user session
             this._initializeUserSession();
 
             // enable routing
             this.getRouter().initialize();
+        },
+
+        _initializeI18n() {
+            // Create i18n model explicitly to avoid locale issues
+            const oI18nModel = new ResourceModel({
+                bundleName: "eshm.i18n.i18n",
+                supportedLocales: ["en"],
+                fallbackLocale: "en"
+            });
+            this.setModel(oI18nModel, "i18n");
         },
 
         _initializeUserSession() {

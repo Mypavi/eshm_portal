@@ -1,61 +1,63 @@
-# EHSM Application Test Instructions
+# EHSM Application Test Instructions - UPDATED FIXES
 
-## Fixed Issues:
+## Latest Fixes Applied:
 
-1. **Component-preload.js 404 Error**: 
-   - Changed `data-sap-ui-async="false"` in index.html to disable async loading during development
-   - Added `data-sap-ui-preload="async"` for better performance
+### 1. **Component-preload.js 404 Error**: 
+   - Completely disabled preloading: `data-sap-ui-preload=""` in index.html
+   - Set `data-sap-ui-async="false"` to disable async loading
+   - Created empty `Component-preload.js` file to prevent 404 errors
+   - Disabled preload in manifest.json: `"preload": false`
+   - Set routing to `"async": false`
 
-2. **i18n Locale Issues**:
-   - Added `supportedLocales` and `fallbackLocale` configuration in manifest.json
-   - Created `i18n_en.properties` file for English locale support
+### 2. **i18n Locale Issues**:
+   - Updated i18n configuration with explicit `bundleUrl`
+   - Set `supportedLocales: ["en"]` and `fallbackLocale: "en"`
+   - Added explicit i18n model initialization in Component.js
+   - Created both `i18n.properties` and `i18n_en.properties` files
 
-3. **Authentication Flow**:
-   - Fixed Component.js to properly initialize user session and routing guards
-   - Improved Login controller navigation (removed setTimeout, added immediate navigation)
-   - Enhanced Dashboard controller authentication checks
+### 3. **Alternative Index File**:
+   - Created `index-simple.html` as backup option
+   - Uses traditional ComponentContainer approach instead of ComponentSupport
 
-4. **Mock Data Setup**:
-   - Added your credentials (K901900 / Pavi@12345) to mock data
-   - Created incident and risk data for your employee ID
-   - Created missing mock data directory structure and JSON files
+## Test Options:
 
-5. **OData Service Configuration**:
-   - Changed hardcoded IP to relative path for better development experience
-   - Mock server will handle requests when OData service is unavailable
-
-## Test Steps:
-
+### Option 1: Use Updated index.html
 1. **Start the application**:
    ```bash
    cd sap_ui5_backup
    npm start
    ```
 
-2. **Login with your credentials**:
-   - Employee ID: `K901900`
-   - Password: `Pavi@12345`
+### Option 2: Use Simple Index (if Option 1 still has issues)
+1. **Rename files**:
+   ```bash
+   cd sap_ui5_backup/webapp
+   mv index.html index-original.html
+   mv index-simple.html index.html
+   ```
+2. **Start the application**:
+   ```bash
+   npm start
+   ```
 
-3. **Verify Dashboard**:
-   - Should show incident and risk statistics
-   - Should display data tables with your incidents and risks
-   - Should show welcome message with your employee ID
+## Login Credentials:
 
-4. **Test Navigation**:
-   - Logout should return to login screen
-   - Direct access to dashboard without login should redirect to login
+- **Your Account**: K901900 / Pavi@12345
+- **Test Account**: 00000001 / 12345
 
-## Expected Results:
+## Expected Results After Fixes:
 
-- No more 404 errors for Component-preload.js
-- No more i18n locale warnings
-- Successful login and navigation to dashboard
-- Dashboard displays your incident and risk data
-- All console errors should be resolved
+✅ No Component-preload.js 404 errors  
+✅ No i18n locale warnings  
+✅ Successful login and dashboard navigation  
+✅ Dashboard shows your incident/risk data  
+✅ Clean console without errors  
 
-## Credentials Available:
+## Troubleshooting:
 
-1. **Original**: 00000001 / 12345
-2. **Your Account**: K901900 / Pavi@12345
+If you still see errors:
+1. Clear browser cache completely
+2. Try the alternative index-simple.html approach
+3. Check browser developer tools Network tab for any remaining 404s
 
-Both accounts have sample incident and risk data for testing.
+The application should now work without any console errors and properly display your dashboard with incident and risk data.

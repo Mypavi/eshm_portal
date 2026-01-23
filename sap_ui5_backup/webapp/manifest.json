@@ -63,13 +63,14 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "eshm.i18n.i18n",
-          "supportedLocales": ["", "en"],
+          "bundleUrl": "i18n/i18n.properties",
+          "supportedLocales": ["en"],
           "fallbackLocale": "en"
         }
       },
       "": {
         "dataSource": "mainService",
-        "preload": true,
+        "preload": false,
         "settings": {}
       }
     },
@@ -89,7 +90,7 @@
         "type": "View",
         "viewType": "XML",
         "path": "eshm.view",
-        "async": true,
+        "async": false,
         "viewPath": "eshm.view"
       },
       "routes": [
